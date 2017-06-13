@@ -1,0 +1,13 @@
+<h3>User</h3>
+<p>Name: <%= @user.name if @user.name %></p>
+<p>Email: <%= @user.email if @user.email %></p>
+
+<% if @user.likes.exists? %>
+<% @liked = @user.likes.to_ary %>
+    <h3>Products Liked</h3>
+    <p> 
+	    <% @liked.each do |t| %>
+	    <%= link_to showNameProduct(t.product_id), product_path(t.product_id) %>,  
+	    <% end %>
+    </p>
+  <% end %>
